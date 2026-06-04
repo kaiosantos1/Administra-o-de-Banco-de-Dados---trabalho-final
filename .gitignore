@@ -1,0 +1,29 @@
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# MongoDB
+*.wt
+
+# PostgreSQL
+*.backup
+
+# Temporary files
+tmp/
+temp/
+
+# Benchmark results generated locally
+results/generated/
+
+# Node
+node_modules/
