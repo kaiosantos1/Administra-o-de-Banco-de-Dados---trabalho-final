@@ -5,7 +5,9 @@ const { MongoClient } = require('mongodb');
 
 const uri = 'mongodb://localhost:27017';
 const dbName = 'tpc_h';
-const dataPath = 'C:\\Users\\clara\\Downloads\\trab_bd\\pasta\\dbgen.data';
+
+// colocar abaixo caminho da pasta com os arquivos .tbl
+const dataPath = '\\dbgen.data';
 
 const tabelasSimples = [
     {
