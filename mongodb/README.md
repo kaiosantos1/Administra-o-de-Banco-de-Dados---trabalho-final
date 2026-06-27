@@ -4,7 +4,7 @@ Esta pasta contém os arquivos relacionados à implementação do benchmark TPC-
 
 ## Conteúdo esperado
 
-- Scripts de importação dos dados
+- 'importar.cjs' -> script de importação dos dados -> colocar no 'dataPath' o caminho da pasta dbgen.data (que tem que ter todos arquivos .tbl) e rode no prompt com 'node importar.cjs'
 - Modelagem das coleções
 - Pipelines de agregação
 - Índices criados
