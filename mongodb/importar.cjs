@@ -84,10 +84,10 @@ async function importarPedidosEAninharItens(client) {
 
     await ordersCol.deleteMany({});
 
-    console.log('\n▶️ FASE 1: A importar ORDERS...');
+    console.log('\nFASE 1: Importando ORDERS...');
     let arquivoOrders = path.join(dataPath, 'orders.tbl');
     if (!fs.existsSync(arquivoOrders)) {
-        console.log(`⚠️ Arquivo ${arquivoOrders} não encontrado. A saltar...`);
+        console.log(`Arquivo ${arquivoOrders} não encontrado. Pulando...`);
         return;
     }
 
@@ -128,10 +128,10 @@ async function importarPedidosEAninharItens(client) {
     }
     console.log(`\nFASE 1 Concluída! Total de Pedidos: ${totalOrders}`);
 
-    console.log('\nFASE 2: A aninhar LINEITEMS dentro dos Pedidos...');
+    console.log('\nFASE 2: Aninhando LINEITEMS dentro dos Pedidos...');
     let arquivoLineitem = path.join(dataPath, 'lineitem.tbl');
     if (!fs.existsSync(arquivoLineitem)) {
-        console.log(`Arquivo ${arquivoLineitem} não encontrado. A saltar Fase 2...`);
+        console.log(`Arquivo ${arquivoLineitem} não encontrado. Pulando Fase 2...`);
     } else {
         fileStream = fs.createReadStream(arquivoLineitem);
         rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
@@ -185,7 +185,7 @@ async function importarPedidosEAninharItens(client) {
         console.log(`\nFASE 2 Concluída! Total de Itens aninhados: ${totalItems}`);
     }
 
-    console.log('\nFASE 3: A criar Índices Multikey...');
+    console.log('\nFASE 3: Criando Índices Multikey...');
     await ordersCol.createIndex({ "lineitems.l_shipdate": 1 });
     await ordersCol.createIndex({ "lineitems.l_returnflag": 1, "lineitems.l_linestatus": 1 });
     await ordersCol.createIndex({ "o_orderdate": 1 });
@@ -194,7 +194,7 @@ async function importarPedidosEAninharItens(client) {
 
 async function importarTabelaSimples(client, config) {
     if (!fs.existsSync(config.arquivo)) {
-        console.log(`Arquivo ${config.arquivo} não encontrado. A saltar...`);
+        console.log(`Arquivo ${config.arquivo} não encontrado. Pulando...`);
         return;
     }
 
@@ -202,7 +202,7 @@ async function importarTabelaSimples(client, config) {
     const collection = db.collection(config.colecao);
     
     await collection.deleteMany({});
-    console.log(`\nA iniciar importação de: ${config.colecao.toUpperCase()}`);
+    console.log(`\nIniciando importação de: ${config.colecao.toUpperCase()}`);
 
     const fileStream = fs.createReadStream(config.arquivo);
     const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
